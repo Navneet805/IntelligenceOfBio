@@ -1,11 +1,9 @@
 from Bio.Seq import Seq
 
-# Your DNA input
 text = ("GTTCCGAAAGGCTAGCGCTAGGCGCCAAGCGGCCGGTTTCCTTGGCGACGGAGAGCGCGGGAATTTTAGA"
     "TAGATTGTAATTGCGGCTGCGCGGCCGCTGCCCGTGCAGCCAGAGGATCCAGCACCTCTCTTGGGGCTTC"
     "TCCGTCCTCGGCGCTTGGAAGTACGGATCTTTTTTCTCGGAGAAAAGTTCACTGGAACTGGAAGAAATGG")
 
-# Convert DNA → Protein using Bio
 dna_seq = Seq(text)
 protein_seq = str(dna_seq.translate(to_stop=False)).replace("*", "")
 
@@ -29,8 +27,6 @@ def branch_and_bound(protein, k):
 
         for j in range(k):
             weight += AA_MW[protein[i+j]]
-
-            # prune if already smaller
             if weight < max_weight and j == k-1:
                 break
 
@@ -39,5 +35,6 @@ def branch_and_bound(protein, k):
             best = protein[i:i+k]
 
     return best, max_weight
+
 
 print("Branch & Bound:", branch_and_bound(protein_seq, k))
