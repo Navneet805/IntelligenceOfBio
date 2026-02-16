@@ -1,11 +1,9 @@
 from Bio.Seq import Seq
 
-# Your DNA input
 text = ("GTTCCGAAAGGCTAGCGCTAGGCGCCAAGCGGCCGGTTTCCTTGGCGACGGAGAGCGCGGGAATTTTAGA"
     "TAGATTGTAATTGCGGCTGCGCGGCCGCTGCCCGTGCAGCCAGAGGATCCAGCACCTCTCTTGGGGCTTC"
     "TCCGTCCTCGGCGCTTGGAAGTACGGATCTTTTTTCTCGGAGAAAAGTTCACTGGAACTGGAAGAAATGG")
 
-# Convert DNA → Protein using Bio
 dna_seq = Seq(text)
 protein_seq = str(dna_seq.translate(to_stop=False)).replace("*", "")
 
@@ -33,4 +31,5 @@ def leaderboard(protein, k, N):
 
 print("Leaderboard Top 5:")
 for p in leaderboard(protein_seq, k, 5):
+
     print(p)
